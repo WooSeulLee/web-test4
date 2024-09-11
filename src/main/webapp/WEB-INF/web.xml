@@ -23,4 +23,22 @@
   	<servlet-name>CarServlet</servlet-name>
   	<url-pattern>/car/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>GoodsServlet</servlet-name>
+  <servlet-class>com.remind.test.servlet.GoodsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>GoodsServlet</servlet-name>
+  <url-pattern>/goods/*</url-pattern>
+  </servlet-mapping>
+  
+<filter>
+<filter-name>EncodinfFilter</filter-name>
+<filter-class>com.remind.test.filter.EncodingFilter</filter-class>
+</filter>
+<filter-mapping>
+<filter-name>EncodinfFilter</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
 </web-app>

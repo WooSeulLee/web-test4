@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>안녕하세요</h3>
-<a href="/views/user/user-list">유저리스트</a>
-<a href="/car/car-list">차량리스트</a>
-<a href="/goods/goods-list">상품리스트</a>
+<script>
+	alert('<%=request.getAttribute("msg")%>');
+	location.href='<%=request.getAttribute("uri")%>';
+</script>
 </body>
 </html>

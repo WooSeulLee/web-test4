@@ -23,12 +23,13 @@ for (CarVO car : cars) {
 
 		<tr>
 			<th><%=car.getCiNum()%></th>
-			<th><%=car.getCiName()%></th>
+			<td><a href="/car/car-view?ciNum=<%=car.getCiNum()%>"><%=car.getCiName()%></a></td>
 			<th><%=car.getCiYear()%></th>
 		</tr>
 <%
 }
 %>
 	</table>
+	<button onclick="location.href='/views/car/car-insert'">차량등록</button>
 </body>
 </html>
