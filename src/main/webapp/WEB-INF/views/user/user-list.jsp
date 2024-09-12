@@ -11,6 +11,7 @@
 <body>
 <h3>유저리스트</h3>
 
+<button onclick="location.href='/views/user/user-insert'">유저 등록</button>
 
 <table border ="1">
 	<tr>

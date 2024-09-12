@@ -5,33 +5,49 @@
 <mapper namespace="UserMapper">
 
 	<select id="selectUsers" resultType="com.remind.test.vo.UserVO">
-		SELECT UI_NUM, UI_NAME, UI_ID, UI_PWD,
+		SELECT UI_NUM, UI_NAME,
+		UI_ID, UI_PWD,
 		UI_GENDER, UI_BIRTH, UI_HOBBY, UI_DESC,
 		CREDAT,CRETIM
 		FROM user_info;
 	</select>
-	
-	<select id ="selectUser" resultType="com.remind.test.vo.UserVO">
-		SELECT UI_NUM, UI_NAME, UI_ID, UI_PWD,
+
+	<select id="selectUser" resultType="com.remind.test.vo.UserVO">
+		SELECT UI_NUM, UI_NAME,
+		UI_ID, UI_PWD,
 		UI_GENDER, UI_BIRTH, UI_HOBBY, UI_DESC,
 		CREDAT,CRETIM
 		FROM user_info
 		WHERE UI_NUM = #{uiNum}
 	</select>
-	
-	<insert id="insertUser" parameterType="com.remind.test.vo.UserVO">
+
+	<select id="selectUserForLogin"
+		resultType="com.remind.test.vo.UserVO">
+		SELECT UI_NUM, UI_NAME, UI_ID, UI_PWD,
+		UI_GENDER, UI_BIRTH,
+		UI_HOBBY, UI_DESC,
+		CREDAT,CRETIM
+		FROM user_info
+		WHERE UI_ID = #{uiId} AND
+		UI_PWD = #{uiPwd}
+	</select>
+
+	<insert id="insertUser"
+		parameterType="com.remind.test.vo.UserVO">
 		INSERT INTO user_info(
 		UI_NAME, UI_ID, UI_PWD, UI_GENDER,
 		UI_BIRTH, UI_HOBBY, UI_DESC)
-		VALUES (#{uiName}, #{uiId}, #{uiPwd}, #{uiGender},
+		VALUES (#{uiName}, #{uiId}, #{uiPwd},
+		#{uiGender},
 		#{uiBirth}, #{uiHobby}, #{uiDesc});
 	</insert>
-	
-	<update id="updateUser" parameterType="com.remind.test.vo.UserVO">
+
+	<update id="updateUser"
+		parameterType="com.remind.test.vo.UserVO">
 		UPDATE user_info
 		SET UI_NAME = #{uiName},
 		<if test='uiPwd !=null and uiPwd !=""'>
-		UI_PWD = #{uiPwd},
+			UI_PWD = #{uiPwd},
 		</if>
 		UI_GENDER = #{uiGender},
 		UI_BIRTH = #{uiBirth},
@@ -39,8 +55,9 @@
 		UI_DESC = #{uiDesc}
 		WHERE UI_NUM = #{uiNum}
 	</update>
-	
-	<delete id="deleteUser" parameterType="com.remind.test.vo.UserVO">
+
+	<delete id="deleteUser"
+		parameterType="com.remind.test.vo.UserVO">
 		DELETE FROM user_info WHERE UI_NUM = #{uiNum}
 	</delete>
 </mapper>
